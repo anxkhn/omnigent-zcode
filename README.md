@@ -17,7 +17,7 @@ zcode login
 If Omnigent is installed as a uv tool, install the plugin into that tool:
 
 ```bash
-uv tool inject omnigent git+https://github.com/anxkhn/omnigent-zcode.git
+uv tool install --python 3.12 --with git+https://github.com/anxkhn/omnigent-zcode.git "omnigent>=0.17,<0.18"
 omnigent run --harness zcode -p "Say pong"
 ```
 
