@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "omnigent-zcode"
-version = "0.1.0"
+version = "0.2.0"
 description = "Community ZCode print-mode harness for Omnigent"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
-dependencies = ["omnigent>=0.17,<0.18"]
+dependencies = ["omnigent>=0.17"]
 
 [project.urls]
 Repository = "https://github.com/anxkhn/omnigent-zcode"

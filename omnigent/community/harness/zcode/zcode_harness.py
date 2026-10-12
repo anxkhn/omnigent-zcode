@@ -11,6 +11,7 @@ Env vars:
   ``OMNIGENT_RUNNER_WORKSPACE``.
 - ``HARNESS_ZCODE_MODE``: must be ``yolo``. Unset also means ``yolo``.
 - ``OMNIGENT_ZCODE_PATH``: absolute path to the ``zcode`` binary.
+- ``HARNESS_ZCODE_WORKFLOW_MODE``: optional ZCode 3.15.1 workflow mode.
 - ``HARNESS_ZCODE_OS_ENV``: JSON :class:`OSEnvSpec`.
 - ``HARNESS_ZCODE_DISALLOWED_TOOLS``: JSON list of tool names for
   ``--disallowed-tools``. This selects tools; it is not a hard yolo boundary.
@@ -97,6 +98,7 @@ def _build_zcode_executor() -> Executor:
         cwd=os.environ.get(_ENV_CWD) or os.environ.get("OMNIGENT_RUNNER_WORKSPACE"),
         model=model,
         mode=mode,
+        workflow_mode=os.environ.get("HARNESS_ZCODE_WORKFLOW_MODE") or None,
         os_env=_resolve_os_env(),
         disallowed_tools=_disallowed_tools(),
     )

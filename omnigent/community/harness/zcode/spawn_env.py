@@ -35,6 +35,9 @@ def build_spawn_env(
     mode = spec.executor.config.get("mode") or spec.executor.config.get("permission_mode")
     if mode is not None:
         env["HARNESS_ZCODE_MODE"] = str(mode)
+    workflow_mode = spec.executor.config.get("workflow_mode")
+    if workflow_mode is not None:
+        env["HARNESS_ZCODE_WORKFLOW_MODE"] = str(workflow_mode)
     disallowed = spec.executor.config.get("disallowed_tools")
     if isinstance(disallowed, list) and disallowed:
         env["HARNESS_ZCODE_DISALLOWED_TOOLS"] = json.dumps(disallowed)

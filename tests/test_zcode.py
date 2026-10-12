@@ -184,6 +184,19 @@ def test_build_args_uses_print_mode_order() -> None:
     ]
 
 
+@pytest.mark.parametrize("mode", ["disabled", "onDemand", "alwaysOn"])
+def test_workflow_mode_is_passed_to_cli(mode):
+    assert build_zcode_args("zcode", "hi", cwd="/work", workflow_mode=mode)[-2:] == [
+        "--workflow-mode",
+        mode,
+    ]
+
+
+def test_invalid_workflow_mode_is_rejected():
+    with pytest.raises(ZCodeModelError, match="workflow_mode"):
+        ZCodeExecutor(workflow_mode="invalid")
+
+
 def test_print_stream_parses_top_level_events_and_nested_results() -> None:
     text = parse_stream_line(
         json.dumps({"type": "model.streaming", "payload": {"kind": "text_delta", "delta": "pong"}})

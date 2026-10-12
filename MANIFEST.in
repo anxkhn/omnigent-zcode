@@ -1,3 +1,4 @@
 include .python-version
 recursive-include examples *.yaml
 recursive-include tests *.py
+recursive-include docs *.md *.svg

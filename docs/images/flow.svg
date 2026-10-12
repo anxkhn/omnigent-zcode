@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="230" viewBox="0 0 1100 230" role="img" aria-labelledby="title desc">
+  <title id="title">How a turn reaches ZCode</title>
+  <desc id="desc">Omnigent sends a prompt to the plugin, the plugin launches ZCode, and stream-json events return to the session.</desc>
+  <rect width="1100" height="230" rx="20" fill="#10151d"/>
+  <g fill="#1b2431" stroke="#354255" stroke-width="2">
+    <rect x="30" y="45" width="285" height="110" rx="14"/>
+    <rect x="407" y="45" width="285" height="110" rx="14"/>
+    <rect x="785" y="45" width="285" height="110" rx="14"/>
+  </g>
+  <g font-family="sans-serif" text-anchor="middle">
+    <g fill="#f2f5f8" font-size="26" font-weight="700">
+      <text x="172" y="94">Omnigent session</text><text x="550" y="94">omnigent-zcode</text><text x="927" y="94">ZCode CLI</text>
+    </g>
+    <g fill="#bcc8d7" font-size="17">
+      <text x="172" y="126">CLI or web conversation</text><text x="550" y="126">launch + event translation</text><text x="927" y="126">vendor model + tools</text>
+      <text x="550" y="202">text, reasoning, tool results and usage return as streamed events</text>
+    </g>
+  </g>
+  <g stroke="#a6f17b" stroke-width="3" fill="none">
+    <path d="M331 89h58m-9-7 9 7-9 7M708 89h59m-9-7 9 7-9 7"/>
+    <path d="M389 117h-58m9-7-9 7 9 7M767 117h-59m9-7-9 7 9 7"/>
+  </g>
+</svg>

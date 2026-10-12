@@ -70,6 +70,7 @@ def build_zcode_args(
     mode: str = "yolo",
     attachments: list[str] | None = None,
     disallowed_tools: list[str] | None = None,
+    workflow_mode: str | None = None,
 ) -> list[str]:
     """Build argv for one headless ZCode turn."""
     args = [zcode_path, "--cwd", cwd]
@@ -81,6 +82,8 @@ def build_zcode_args(
     if disallowed_tools:
         args.append("--disallowed-tools")
         args.extend(disallowed_tools)
+    if workflow_mode is not None:
+        args.extend(["--workflow-mode", workflow_mode])
     return args
 
 
@@ -134,6 +137,7 @@ class ZCodeExecutor(Executor):
         mode: str | None = None,
         os_env: OSEnvSpec | None = None,
         disallowed_tools: list[str] | None = None,
+        workflow_mode: str | None = None,
     ) -> None:
         self._zcode_path = zcode_path or shutil.which("zcode") or "zcode"
         self._cwd = str(Path(cwd or os.getcwd()).resolve())
@@ -143,6 +147,9 @@ class ZCodeExecutor(Executor):
             type="caller_process", sandbox=OSEnvSandboxSpec(type="none")
         )
         self._disallowed_tools = list(disallowed_tools or [])
+        if workflow_mode not in {None, "disabled", "onDemand", "alwaysOn"}:
+            raise ZCodeModelError(f"Unsupported ZCode workflow_mode: {workflow_mode}")
+        self._workflow_mode = workflow_mode
         self._session_map: dict[str, str] = {}
         self._system_prompt_sent: set[str] = set()
         self._attachment_keys: dict[str, Path] = {}
@@ -308,6 +315,7 @@ class ZCodeExecutor(Executor):
             mode=mode,
             attachments=attachments,
             disallowed_tools=self._disallowed_tools,
+            workflow_mode=self._workflow_mode,
         )
         try:
             proc = await asyncio.create_subprocess_exec(

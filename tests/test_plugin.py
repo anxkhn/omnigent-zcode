@@ -67,7 +67,7 @@ def test_registration_survives_fresh_process():
 
 def test_spawn_builder_round_trips_config(tmp_path, monkeypatch):
     monkeypatch.setattr("omnigent.onboarding.provider_config.load_config", lambda: {})
-    agent = spec(mode="yolo", disallowed_tools=["shell"])
+    agent = spec(mode="yolo", disallowed_tools=["shell"], workflow_mode="onDemand")
     agent.os_env = OSEnvSpec(
         type="caller_process",
         cwd=str(tmp_path),
@@ -76,6 +76,7 @@ def test_spawn_builder_round_trips_config(tmp_path, monkeypatch):
     env = build_spawn_env(agent, cwd=tmp_path)
     assert env["HARNESS_ZCODE_CWD"] == str(tmp_path)
     assert env["HARNESS_ZCODE_MODE"] == "yolo"
+    assert env["HARNESS_ZCODE_WORKFLOW_MODE"] == "onDemand"
     assert json.loads(env["HARNESS_ZCODE_DISALLOWED_TOOLS"]) == ["shell"]
     assert json.loads(env["HARNESS_ZCODE_OS_ENV"])["sandbox"]["env_passthrough"] == ["CUSTOM_TOKEN"]
 

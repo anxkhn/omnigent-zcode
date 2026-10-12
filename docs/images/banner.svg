@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">ZCode meets Omnigent</title>
+  <desc id="desc">A community plugin connects ZCode's coding CLI to Omnigent sessions.</desc>
+  <rect width="1200" height="360" rx="24" fill="#10151d"/>
+  <rect x="56" y="54" width="66" height="66" rx="16" fill="#a6f17b"/>
+  <path d="M72 74h34L72 100h34" fill="none" stroke="#10151d" stroke-width="7" stroke-linejoin="round"/>
+  <text x="145" y="102" fill="#f2f5f8" font-family="sans-serif" font-size="42" font-weight="700">ZCode meets Omnigent</text>
+  <text x="58" y="159" fill="#b1bdcc" font-family="sans-serif" font-size="23">Your coding agent. Your sessions. One install.</text>
+  <rect x="56" y="202" width="1088" height="101" rx="14" fill="#1b2431" stroke="#354255"/>
+  <text x="82" y="247" fill="#a6f17b" font-family="monospace" font-size="22">$ omnigent run --harness zcode</text>
+  <text x="82" y="279" fill="#bcc8d7" font-family="monospace" font-size="17">streaming / tools / attachments / resume / cancel</text>
+</svg>
