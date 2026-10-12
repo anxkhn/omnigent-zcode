@@ -1,0 +1,6 @@
+omnigent-zcode
+
+The ZCode executor, stream parser, configuration validation, harness adapter,
+and executor tests were extracted and adapted from Anas Khan's contribution
+in omnigent-ai/omnigent PR #8470, licensed under Apache-2.0.
+https://github.com/omnigent-ai/omnigent/pull/8470

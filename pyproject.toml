@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omnigent-zcode"
+version = "0.1.0"
+description = "Community ZCode print-mode harness for Omnigent"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+dependencies = ["omnigent>=0.17,<0.18"]
+
+[project.urls]
+Repository = "https://github.com/anxkhn/omnigent-zcode"
+Issues = "https://github.com/anxkhn/omnigent-zcode/issues"
+
+[project.entry-points."omnigent.community.harness"]
+zcode = "omnigent.community.harness.zcode.plugin:get_contribution"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["omnigent.community.harness.zcode*"]
+namespaces = true
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.15"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
