@@ -37,7 +37,7 @@ jobs:
           ref: v3.15.1
           path: vendor-zcode
       - run: corepack enable
-      - run: pnpm install --filter @zcode/cli... --frozen-lockfile --ignore-scripts
+      - run: pnpm install --filter @zcode/cli... --frozen-lockfile --ignore-scripts --config.node-linker=isolated
         working-directory: vendor-zcode
       - run: pnpm --filter @zcode/cli... build
         working-directory: vendor-zcode
